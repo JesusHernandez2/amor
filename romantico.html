@@ -2,335 +2,288 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ley</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,700;1,400&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Para Ti, Ley">
+    <title>Por Qué Te Amo, Ley - Mi Ensayo del Corazón</title>
     <style>
-        body {
-            font-family: 'Playfair Display', serif;
-            background: linear-gradient(135deg, #fff9f9, #ffebee);
-            color: #5a3e36;
-            text-align: center;
-            padding: 0;
+        /* Estilos románticos, fluidos y optimizados para móviles */
+        * {
             margin: 0;
-            overflow: hidden;
-            height: 100vh;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Georgia', serif; /* Fuentes nativas para iOS/Android */
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fad0c4 100%);
+            color: #4a0e3a;
+            line-height: 1.7;
+            padding: 20px;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
-
-        .container {
-            max-width: 650px;
-            padding: 40px;
+            overflow-x: hidden;
             position: relative;
-            z-index: 2;
+            /* Soporte para safe areas en iOS (notch) */
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
         }
-
-        h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4.5em;
-            color: #b88669;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
-            letter-spacing: 0.05em;
-        }
-
-        .text-box {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.45em;
-            line-height: 1.9;
-            text-align: justify;
-            padding: 40px;
-            background: linear-gradient(145deg, #fffef9, #fffbf0);
-            border-radius: 10px;
-            border: 1px solid #d4a373;
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-            position: relative;
-            min-height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px auto;
-            border-top: 3px double #d4a373;
-            border-bottom: 3px double #d4a373;
-            background-image: radial-gradient(circle at top left, rgba(212, 163, 115, 0.1) 0%, transparent 30%);
-        }
-
-        .message {
-            display: none;
-            animation: fadeIn 2.5s ease-in-out;
-            color: #5a3e36;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(25px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hearts-container {
+        
+        /* Corazones flotantes etéreos, suaves en móviles */
+        .hearts {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
             pointer-events: none;
+            z-index: -1;
         }
-
         .heart {
             position: absolute;
-            color: rgba(255, 90, 90, 0.6);
-            font-size: 3.5em;
-            animation: float linear infinite;
+            font-size: 18px;
+            color: rgba(255, 105, 180, 0.7);
+            animation: float 8s infinite linear;
         }
-
         @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
-
-        /* Contenedor del dibujo final */
-        .drawing-container {
-            display: none;
-            margin-top: 30px;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        /* Estilo para el dibujo estilo flork */
-        .drawing {
-            width: 250px;
-            height: 200px;
-            margin: 0 auto;
+        
+        /* Contenedor principal fijo, adaptable */
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.4);
+            text-align: center;
             position: relative;
+            animation: gentlePulse 3s infinite ease-in-out;
+            /* Transiciones suaves para touch */
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
         }
-
-        /* Personita estilo flork */
-        .person {
-            position: absolute;
-            left: 30px;
-            top: 30px;
+        
+        @keyframes gentlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
-
-        .head {
-            width: 50px;
-            height: 50px;
-            background-color: transparent;
-            border: 3px solid #5a3e36;
-            border-radius: 50%;
+        
+        /* Título del alma, escalable */
+        h1 {
+            font-size: 2.8em;
+            color: #c2185b;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
             position: relative;
+            /* Optimizado para iOS */
+            -webkit-text-size-adjust: 100%;
         }
-
-        .eye {
-            width: 8px;
-            height: 8px;
-            background-color: #5a3e36;
-            border-radius: 50%;
+        h1::after {
+            content: '💖 Mi Ley 💖';
+            font-size: 0.6em;
             position: absolute;
-            top: 15px;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #e91e63;
         }
-
-        .eye.left { left: 12px; }
-        .eye.right { right: 12px; }
-
-        .mouth {
-            width: 20px;
-            height: 10px;
-            border-bottom: 3px solid #5a3e36;
-            border-radius: 0 0 20px 20px;
-            position: absolute;
-            bottom: 10px;
-            left: 15px;
+        
+        /* Recuadro fijo para el texto, scrollable si es largo */
+        #textBox {
+            font-size: 1.2em;
+            margin: 20px 0;
+            text-align: justify;
+            opacity: 0;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+            background: linear-gradient(45deg, rgba(255, 182, 193, 0.4), rgba(255, 218, 185, 0.4));
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px dashed #e91e63;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+            transition: opacity 1s ease;
+            position: relative;
+            /* Scroll suave para Android/iOS */
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #e91e63 transparent;
         }
-
-        .body {
-            width: 4px;
-            height: 60px;
-            background-color: #5a3e36;
-            position: absolute;
-            top: 45px;
-            left: 23px;
-        }
-
-        .arm {
-            width: 30px;
-            height: 4px;
-            background-color: #5a3e36;
-            position: absolute;
-            top: 50px;
-            left: 5px;
-            transform: rotate(30deg);
-            transform-origin: left;
-        }
-
-        /* Ramo de rosas rojas */
-        .bouquet {
-            position: absolute;
-            top: 10px;
-            left: 70px;
-            width: 120px;
-            height: 100px;
-        }
-
-        .rose {
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            background-color: #e91e63;
-            border-radius: 50%;
-            border: 2px solid #c2185b;
-        }
-
-        .rose:nth-child(1) { top: 0; left: 0; }
-        .rose:nth-child(2) { top: 15px; left: 20px; }
-        .rose:nth-child(3) { top: 30px; left: 40px; }
-        .rose:nth-child(4) { top: 20px; left: 60px; }
-        .rose:nth-child(5) { top: 40px; left: 80px; }
-
-        .stem {
-            position: absolute;
+        #textBox::-webkit-scrollbar {
             width: 6px;
-            height: 70px;
-            background-color: #4caf50;
-            top: 40px;
-            left: 70px;
+        }
+        #textBox::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        #textBox::-webkit-scrollbar-thumb {
+            background: #e91e63;
             border-radius: 3px;
         }
-
-        .leaf {
-            position: absolute;
-            width: 15px;
-            height: 8px;
-            background-color: #4caf50;
-            border-radius: 50%;
-            top: 80px;
-            left: 65px;
-            transform: rotate(-30deg);
+        #textBox.visible {
+            opacity: 1;
         }
-
-        .final-message {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.8em;
-            color: #d4a373;
+        #textBox::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 10px;
+            width: 20px;
+            height: 2px;
+            background: #e91e63;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        /* Imagen final del flork, responsive */
+        #flork {
+            display: none;
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.5);
+            animation: appear 1.5s ease-out;
             margin-top: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            /* Optimizado para touch */
+            touch-action: manipulation;
+        }
+        @keyframes appear {
+            from { opacity: 0; transform: scale(0.8) rotate(-5deg); }
+            to { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+        
+        /* Botón juguetón, touch-friendly (mínimo 44px altura para iOS) */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 15px 30px; /* Padding generoso para dedos */
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1em;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+            cursor: pointer;
+            border: none;
+            min-height: 44px; /* Estándar iOS para accesibilidad */
+            width: 100%;
+            max-width: 250px;
+            -webkit-tap-highlight-color: transparent; /* Quita el highlight azul en iOS */
+        }
+        .btn:hover, .btn:active {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.6);
+        }
+        
+        /* Responsive ultra para móviles iOS/Android */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .container { padding: 30px 20px; border-radius: 20px; }
+            h1 { font-size: 2.2em; }
+            #textBox { font-size: 1.1em; min-height: 150px; max-height: 300px; padding: 15px; }
+            .heart { font-size: 14px; }
+            .btn { padding: 18px 30px; font-size: 1.2em; } /* Más grande en móviles */
+        }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 1.9em; }
+            #textBox { font-size: 1em; line-height: 1.6; padding: 15px; min-height: 120px; max-height: 250px; }
+            body { padding: 5px; }
+            .container { padding: 25px 15px; margin: 5px; }
+        }
+        
+        /* Orientación landscape en móviles */
+        @media (orientation: landscape) and (max-height: 500px) {
+            .container { padding: 20px; }
+            #textBox { max-height: 200px; font-size: 0.9em; }
         }
     </style>
 </head>
 <body>
-    <div class="hearts-container" id="hearts"></div>
-
+    <div class="hearts" id="hearts"></div>
+    
     <div class="container">
-        <h1>Ley</h1>
-
-        <div class="text-box" id="textBox">
-            <div class="message" id="message1">
-                Desde que llegaste a mi vida, todo cobró sentido.
-                No es solo que seas hermosa, sino cómo logras hacerme sentir:
-                seguro, feliz y en paz. Eres mi persona favorita para reír,
-                para soñar y para compartir los silencios.
-                Te amo por cómo me miras, por cómo entiendes mis locuras,
-                y por ser mi complicidad en cada momento.
-                Eres mi luz en los días grises,
-                mi calma cuando el mundo se acelera,
-                y mi razón para creer en el amor verdadero.
-            </div>
-            <div class="message" id="message2">
-                Contigo, hasta los días más simples se convierten en aventuras.
-                Me encanta cómo tu risa ilumina cualquier espacio,
-                cómo tu ternura me hace sentir en casa,
-                y cómo, sin decir nada, logras tranquilizar mi corazón.
-                Eres mi refugio, mi inspiración,
-                y la persona con la que quiero enveecer,
-                rodeado de pequeños detalles que solo nosotros entendemos.
-                Te amo por ser tú, sin máscaras ni condiciones,
-                por aceptarme como soy y por hacer que cada día valga la pena.
-            </div>
-            <div class="message" id="message3">
-                Eres mi elección, hoy y siempre.
-                No importa lo que pase, contigo todo es más fácil,
-                más bonito y más real.
-                Prometo seguir eligiéndote en cada amanecer,
-                en cada despedida y en cada reencuentro.
-                Porque contigo no solo encontré amor,
-                encontré un hogar, una familia y un futuro que me emociona vivir.
-                Eres mi eterno "sí",
-                mi siempre,
-                mi Ley.
-            </div>
-            <div class="message" id="message4">
-                Gracias por ser mi compañera, mi amiga y mi amor.
-                Gracias por enseñarme que el amor no es perfecto,
-                pero contigo se siente completo.
-                Prometo cuidar de ti, de nosotros,
-                y de cada sueño que construyamos juntos.
-                Porque este amor no es solo mío,
-                es nuestro,
-                y juntos lo haremos durar para siempre.
-            </div>
-        </div>
-
-        <!-- Contenedor del dibujo final -->
-        <div class="drawing-container" id="drawingContainer">
-            <div class="drawing">
-                <div class="person">
-                    <div class="head">
-                        <div class="eye left"></div>
-                        <div class="eye right"></div>
-                        <div class="mouth"></div>
-                    </div>
-                    <div class="body"></div>
-                    <div class="arm"></div>
-                </div>
-                <div class="bouquet">
-                    <div class="rose"></div>
-                    <div class="rose"></div>
-                    <div class="rose"></div>
-                    <div class="rose"></div>
-                    <div class="rose"></div>
-                    <div class="stem"></div>
-                    <div class="leaf"></div>
-                </div>
-            </div>
-            <div class="final-message">Te amo, Ley</div>
-        </div>
+        <h1>Por Qué Te Amo, Ley</h1>
+        
+        <div id="textBox"></div>
+        
+        <img id="flork" src="https://previews.123rf.com/images/tanysha561/tanysha5612401/tanysha561240100159/223357554-valentines-day-flork-meme-with-a-bouquet.jpg" alt="Flork con ramo de rosas rojas, solo para ti, mi Ley">
+        
+        <button class="btn" onclick="showFlorkEarly()">Muéstrame la sorpresa ahora 💐</button>
     </div>
 
     <script>
-        // Corazones flotantes
-        const heartsContainer = document.getElementById('hearts');
-        for (let i = 0; i < 30; i++) {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 15 + 8 + 's';
-            heart.style.animationDelay = Math.random() * 5 + 's';
-            heartsContainer.appendChild(heart);
-        }
-
-        // Rotación de mensajes
-        const messages = document.querySelectorAll('.message');
-        let currentMessage = 0;
-
-        function showMessage(index) {
-            messages.forEach((msg, i) => {
-                msg.style.display = (i === index) ? 'block' : 'none';
-            });
-        }
-
-        function nextMessage() {
-            currentMessage = (currentMessage + 1) % messages.length;
-            if (currentMessage === 0) {
-                // Cuando termine el ciclo, mostrar el dibujo
-                document.getElementById('drawingContainer').style.display = 'block';
-                return;
+        // Corazones flotantes que susurran amor, menos en móviles para rendimiento
+        function createHeart() {
+            if (window.innerWidth > 480) { // Solo en pantallas grandes para ahorrar batería
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = ['💕', '💖', '💗', '💝'][Math.floor(Math.random() * 4)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                document.getElementById('hearts').appendChild(heart);
+                setTimeout(() => heart.remove(), 8000);
             }
-            showMessage(currentMessage);
+        }
+        if (window.innerWidth > 480) {
+            setInterval(createHeart, 2000);
         }
 
-        showMessage(0);
-        setInterval(nextMessage, 15000);
+        // El ensayo romántico: por qué amo a Ley
+        const essay = `Ley, mi amor, si el universo entero se detuviera a preguntarme por qué te amo, no bastarían las estrellas para contar cada razón. Te amo por esa sonrisa tuya que ilumina mis días más grises, como un amanecer que pinta el cielo de promesas. Es esa curva en tus labios la que me recuerda que, en un mundo de prisas, tú eres mi pausa eterna, mi respiro de paz.
+
+Te amo por tu bondad, esa que fluye de ti como un río suave, tocando todo a su paso con calidez. Has transformado mis dudas en certezas, mis miedos en valentía, solo con una mirada que dice "estoy aquí". Ley, eres el refugio donde mi alma descansa, el abrazo que cura heridas que ni sabía que llevaba.
+
+Te amo por tu inteligencia, esa chispa en tus ojos cuando hablas de sueños o resuelves enigmas del día a día. Me inspiras a ser mejor, a soñar más grande, porque a tu lado el mundo parece infinito y posible. Tus risas son mi melodía favorita, y tus silencios, mis momentos más profundos de conexión.
+
+Pero sobre todo, Ley, te amo por ser tú: imperfecta en tu perfección, real en tu magia. Por cómo me haces sentir vivo, completo, amado de una forma que no sabía que existía. Cada latido mío lleva tu nombre, cada suspiro tu esencia. Gracias por ser mi porqué, mi todo. Te amo hoy, mañana y en cada vida que el destino nos regale. Tuyo, siempre. 💕`;
+
+        // Efecto de máquina de escribir en el recuadro fijo, pausa en móviles para leer mejor
+        const textBox = document.getElementById('textBox');
+        let i = 0;
+        const speed = window.innerWidth > 768 ? 50 : 80; // Más lento en móviles para saborear
+
+        function typeWriter() {
+            if (i < essay.length) {
+                textBox.innerHTML += essay.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            } else {
+                // Al final, muestra el flork después de una pausa romántica
+                textBox.classList.add('visible');
+                setTimeout(() => {
+                    document.getElementById('flork').style.display = 'block';
+                    textBox.style.opacity = '0.8'; // Atenúa un poco para enfocar en flork
+                }, 3000);
+            }
+        }
+
+        // Inicia el tecleo suave, detecta touch para optimizar
+        textBox.classList.add('visible');
+        typeWriter();
+        
+        // Para mostrar flork temprano, con feedback háptico si es posible
+        function showFlorkEarly() {
+            if ('vibrate' in navigator) {
+                navigator.vibrate(200); // Vibración sutil en Android/iOS para sorpresa
+            }
+            i = essay.length;
+            document.getElementById('flork').style.display = 'block';
+            textBox.innerHTML = essay;
+        }
     </script>
 </body>
 </html>
