@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ley</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,700;1,400&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #fff9f9, #ffebee);
+            color: #5a3e36;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 650px;
+            padding: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5em;
+            color: #b88669;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.05em;
+        }
+
+        .text-box {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45em;
+            line-height: 1.9;
+            text-align: justify;
+            padding: 40px;
+            background: linear-gradient(145deg, #fffef9, #fffbf0);
+            border-radius: 10px;
+            border: 1px solid #d4a373;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            border-top: 3px double #d4a373;
+            border-bottom: 3px double #d4a373;
+            background-image: radial-gradient(circle at top left, rgba(212, 163, 115, 0.1) 0%, transparent 30%);
+        }
+
+        .message {
+            display: none;
+            animation: fadeIn 2.5s ease-in-out;
+            color: #5a3e36;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 90, 90, 0.6);
+            font-size: 3.5em;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Contenedor del dibujo final */
+        .drawing-container {
+            display: none;
+            margin-top: 30px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Estilo para el dibujo estilo flork */
+        .drawing {
+            width: 250px;
+            height: 200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Personita estilo flork */
+        .person {
+            position: absolute;
+            left: 30px;
+            top: 30px;
+        }
+
+        .head {
+            width: 50px;
+            height: 50px;
+            background-color: transparent;
+            border: 3px solid #5a3e36;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .eye {
+            width: 8px;
+            height: 8px;
+            background-color: #5a3e36;
+            border-radius: 50%;
+            position: absolute;
+            top: 15px;
+        }
+
+        .eye.left { left: 12px; }
+        .eye.right { right: 12px; }
+
+        .mouth {
+            width: 20px;
+            height: 10px;
+            border-bottom: 3px solid #5a3e36;
+            border-radius: 0 0 20px 20px;
+            position: absolute;
+            bottom: 10px;
+            left: 15px;
+        }
+
+        .body {
+            width: 4px;
+            height: 60px;
+            background-color: #5a3e36;
+            position: absolute;
+            top: 45px;
+            left: 23px;
+        }
+
+        .arm {
+            width: 30px;
+            height: 4px;
+            background-color: #5a3e36;
+            position: absolute;
+            top: 50px;
+            left: 5px;
+            transform: rotate(30deg);
+            transform-origin: left;
+        }
+
+        /* Ramo de rosas rojas */
+        .bouquet {
+            position: absolute;
+            top: 10px;
+            left: 70px;
+            width: 120px;
+            height: 100px;
+        }
+
+        .rose {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: #e91e63;
+            border-radius: 50%;
+            border: 2px solid #c2185b;
+        }
+
+        .rose:nth-child(1) { top: 0; left: 0; }
+        .rose:nth-child(2) { top: 15px; left: 20px; }
+        .rose:nth-child(3) { top: 30px; left: 40px; }
+        .rose:nth-child(4) { top: 20px; left: 60px; }
+        .rose:nth-child(5) { top: 40px; left: 80px; }
+
+        .stem {
+            position: absolute;
+            width: 6px;
+            height: 70px;
+            background-color: #4caf50;
+            top: 40px;
+            left: 70px;
+            border-radius: 3px;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 15px;
+            height: 8px;
+            background-color: #4caf50;
+            border-radius: 50%;
+            top: 80px;
+            left: 65px;
+            transform: rotate(-30deg);
+        }
+
+        .final-message {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8em;
+            color: #d4a373;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-container" id="hearts"></div>
+
+    <div class="container">
+        <h1>Ley</h1>
+
+        <div class="text-box" id="textBox">
+            <div class="message" id="message1">
+                Desde que llegaste a mi vida, todo cobró sentido.
+                No es solo que seas hermosa, sino cómo logras hacerme sentir:
+                seguro, feliz y en paz. Eres mi persona favorita para reír,
+                para soñar y para compartir los silencios.
+                Te amo por cómo me miras, por cómo entiendes mis locuras,
+                y por ser mi complicidad en cada momento.
+                Eres mi luz en los días grises,
+                mi calma cuando el mundo se acelera,
+                y mi razón para creer en el amor verdadero.
+            </div>
+            <div class="message" id="message2">
+                Contigo, hasta los días más simples se convierten en aventuras.
+                Me encanta cómo tu risa ilumina cualquier espacio,
+                cómo tu ternura me hace sentir en casa,
+                y cómo, sin decir nada, logras tranquilizar mi corazón.
+                Eres mi refugio, mi inspiración,
+                y la persona con la que quiero enveecer,
+                rodeado de pequeños detalles que solo nosotros entendemos.
+                Te amo por ser tú, sin máscaras ni condiciones,
+                por aceptarme como soy y por hacer que cada día valga la pena.
+            </div>
+            <div class="message" id="message3">
+                Eres mi elección, hoy y siempre.
+                No importa lo que pase, contigo todo es más fácil,
+                más bonito y más real.
+                Prometo seguir eligiéndote en cada amanecer,
+                en cada despedida y en cada reencuentro.
+                Porque contigo no solo encontré amor,
+                encontré un hogar, una familia y un futuro que me emociona vivir.
+                Eres mi eterno "sí",
+                mi siempre,
+                mi Ley.
+            </div>
+            <div class="message" id="message4">
+                Gracias por ser mi compañera, mi amiga y mi amor.
+                Gracias por enseñarme que el amor no es perfecto,
+                pero contigo se siente completo.
+                Prometo cuidar de ti, de nosotros,
+                y de cada sueño que construyamos juntos.
+                Porque este amor no es solo mío,
+                es nuestro,
+                y juntos lo haremos durar para siempre.
+            </div>
+        </div>
+
+        <!-- Contenedor del dibujo final -->
+        <div class="drawing-container" id="drawingContainer">
+            <div class="drawing">
+                <div class="person">
+                    <div class="head">
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+                        <div class="mouth"></div>
+                    </div>
+                    <div class="body"></div>
+                    <div class="arm"></div>
+                </div>
+                <div class="bouquet">
+                    <div class="rose"></div>
+                    <div class="rose"></div>
+                    <div class="rose"></div>
+                    <div class="rose"></div>
+                    <div class="rose"></div>
+                    <div class="stem"></div>
+                    <div class="leaf"></div>
+                </div>
+            </div>
+            <div class="final-message">Te amo, Ley</div>
+        </div>
+    </div>
+
+    <script>
+        // Corazones flotantes
+        const heartsContainer = document.getElementById('hearts');
+        for (let i = 0; i < 30; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 15 + 8 + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heartsContainer.appendChild(heart);
+        }
+
+        // Rotación de mensajes
+        const messages = document.querySelectorAll('.message');
+        let currentMessage = 0;
+
+        function showMessage(index) {
+            messages.forEach((msg, i) => {
+                msg.style.display = (i === index) ? 'block' : 'none';
+            });
+        }
+
+        function nextMessage() {
+            currentMessage = (currentMessage + 1) % messages.length;
+            if (currentMessage === 0) {
+                // Cuando termine el ciclo, mostrar el dibujo
+                document.getElementById('drawingContainer').style.display = 'block';
+                return;
+            }
+            showMessage(currentMessage);
+        }
+
+        showMessage(0);
+        setInterval(nextMessage, 15000);
+    </script>
+</body>
+</html>
